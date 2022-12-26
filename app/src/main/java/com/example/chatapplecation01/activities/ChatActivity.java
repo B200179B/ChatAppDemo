@@ -64,6 +64,7 @@ public class ChatActivity extends BaseActivity {
         loadReceiverDetails();
         init();
         listenMessages();
+
     }
     private void init(){
         preferenceManager = new PreferenceManager(getApplicationContext());
@@ -112,6 +113,8 @@ public class ChatActivity extends BaseActivity {
                 JSONObject body = new JSONObject();
                 body.put(Constants.REMOTE_MSG_DATA, data);
                 body.put(Constants.REMOTE_MSG_REGISTRATION_IDS, tokens);
+
+                sendNotification(body.toString());
             }catch (Exception exception) {
                 showToast(exception.getMessage());
             }

@@ -59,6 +59,7 @@ public class MainActivity extends BaseActivity implements ConversionListener {
     }
 
     private void setListeners(){
+        binding.imageBack.setOnClickListener(v -> onBackPressed());
         binding.imageSignOut.setOnClickListener(v -> signOut());
         binding.fabNewChat.setOnClickListener(v ->
                 startActivity(new Intent(getApplicationContext(), UsersActivity.class)));
@@ -68,7 +69,6 @@ public class MainActivity extends BaseActivity implements ConversionListener {
         binding.textName.setText(preferenceManager.getString(Constants.KEY_NAME));
         byte[] bytes = Base64.decode(preferenceManager.getString(Constants.KEY_IMAGE), Base64.DEFAULT);
         Bitmap bitmap = BitmapFactory.decodeByteArray(bytes,0, bytes.length);
-        binding.imageProfile.setImageBitmap(bitmap);
     }
 
     private void showToast(String message){

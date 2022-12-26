@@ -30,6 +30,18 @@ public class Constants {
     public static final String REMOTE_MSG_DATA = "data";
     public static final String REMOTE_MSG_REGISTRATION_IDS = "registration_ids";
 
+    public static final String KEY_COLLECTION_PRODUCT = "products";
+    public static final String KEY_OWNER_ID = "ownerId";
+    public static final String KEY_PRODUCT_NAME = "productName";
+    public static final String KEY_PRODUCT_IMAGE = "productImage";
+    public static final String KEY_CATEGORY = "productCategory";
+    public static final String KEY_LAST_SERVICE_DATE = "lastServiceDate";
+    public static final String KEY_NEXT_SERVICE_DATE = "nextServiceDate";
+    public static final String KEY_WARRANTY_EXPIRY_DATE = "warrantyExpiryDate";
+    public static final String KEY_PRODUCT_TYPE = "productType";
+    public static final String KEY_EXPIRED_DATE = "expiredDate";
+
+
     public static HashMap<String, String> remoteMsgHeaders = null;
     public static HashMap<String, String> getRemoteMsgHeaders(){
         if (remoteMsgHeaders == null){
