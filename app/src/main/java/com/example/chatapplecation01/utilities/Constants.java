@@ -32,12 +32,15 @@ public class Constants {
 
     public static final String KEY_COLLECTION_PRODUCT = "products";
     public static final String KEY_OWNER_ID = "ownerId";
+    public static final String KEY_PRODUCT_ID = "productId";
     public static final String KEY_PRODUCT_NAME = "productName";
     public static final String KEY_PRODUCT_IMAGE = "productImage";
-    public static final String KEY_CATEGORY = "productCategory";
+    public static final String KEY_PRODUCT_CATEGORY = "productCategory";
     public static final String KEY_LAST_SERVICE_DATE = "lastServiceDate";
     public static final String KEY_NEXT_SERVICE_DATE = "nextServiceDate";
     public static final String KEY_WARRANTY_EXPIRY_DATE = "warrantyExpiryDate";
+    public static final String KEY_PRODUCT_NOTES = "notes";
+    public static final String KEY_REMIND_DATE = "remindDate";
     public static final String KEY_PRODUCT_TYPE = "productType";
     public static final String KEY_EXPIRED_DATE = "expiredDate";
 
@@ -58,3 +61,4 @@ public class Constants {
         return remoteMsgHeaders;
     }
 }
+

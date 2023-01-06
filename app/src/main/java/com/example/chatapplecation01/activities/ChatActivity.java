@@ -84,7 +84,8 @@ public class ChatActivity extends BaseActivity {
         message.put(Constants.KEY_RECEIVER_ID,receiverUser.id);
         message.put(Constants.KEY_MESSAGE, binding.inputMessage.getText().toString());
         message.put(Constants.KEY_TIMESTAMP, new Date());
-        database.collection(Constants.KEY_COLLECTION_CHAT).add(message);
+        database.collection(Constants.KEY_COLLECTION_CHAT)
+                .add(message);
         if (conversionId != null){
             updateConversion(binding.inputMessage.getText().toString());
         }else {

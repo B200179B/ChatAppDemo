@@ -38,14 +38,21 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_20sdp">
 
-                <com.makeramen.roundedimageview.RoundedImageView
+                <ImageView
                     android:id="@+id/imageProfile"
                     android:layout_width="@dimen/_80sdp"
                     android:layout_height="@dimen/_80sdp"
-                    android:background="@drawable/background_image"
+                    android:background="#C3C3C3"
                     android:scaleType="centerCrop"
-                    app:riv_oval="true"
                     />
+
+<!--                <com.makeramen.roundedimageview.RoundedImageView-->
+<!--                    android:id="@+id/imageProfile"-->
+<!--                    android:layout_width="@dimen/_80sdp"-->
+<!--                    android:layout_height="@dimen/_80sdp"-->
+<!--                    android:background="#C3C3C3"-->
+<!--                    android:scaleType="centerCrop"-->
+<!--                    />-->
 
                 <TextView
                     android:id="@+id/textAddImage"
@@ -95,55 +102,83 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <EditText
-                android:id="@+id/inputEmail"
+                android:id="@+id/etNextServiceDate"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_45sdp"
                 android:layout_marginTop="@dimen/_16sdp"
                 android:background="@drawable/background_input"
                 android:hint="Next Service Date"
-                android:imeOptions="actionNext"
-                android:importantForAutofill="no"
-                android:inputType="textEmailAddress"
                 android:paddingStart="@dimen/_16sdp"
                 android:paddingEnd="@dimen/_16sdp"
                 android:textColor="@color/primary_text"
                 android:textSize="@dimen/_13ssp"
+                android:editable="false"
                 />
 
             <EditText
-                android:id="@+id/inputPassword"
+                android:id="@+id/etLastServiceDate"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_45sdp"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:background="@drawable/background_input"
+                android:hint="Last Service Date"
+                android:paddingStart="@dimen/_16sdp"
+                android:paddingEnd="@dimen/_16sdp"
+                android:textColor="@color/primary_text"
+                android:textSize="@dimen/_13ssp"
+                android:editable="false"
+                />
+
+            <EditText
+                android:id="@+id/etWarrantyDate"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_45sdp"
                 android:layout_marginTop="@dimen/_16sdp"
                 android:background="@drawable/background_input"
                 android:hint="Warranty Expiry Date"
-                android:imeOptions="actionNext"
-                android:importantForAutofill="no"
-                android:inputType="textPassword"
                 android:paddingStart="@dimen/_16sdp"
                 android:paddingEnd="@dimen/_16sdp"
                 android:textColor="@color/primary_text"
                 android:textSize="@dimen/_13ssp"
+                android:editable="false"
                 />
 
-            <EditText
-                android:id="@+id/inputConfirmPassword"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_45sdp"
-                android:layout_marginTop="@dimen/_16sdp"
-                android:background="@drawable/background_input"
-                android:hint="Remind Before:"
-                android:imeOptions="actionDone"
-                android:importantForAutofill="no"
-                android:inputType="textPassword"
-                android:paddingStart="@dimen/_16sdp"
-                android:paddingEnd="@dimen/_16sdp"
-                android:textColor="@color/primary_text"
-                android:textSize="@dimen/_13ssp"
-                />
+<!--            <EditText-->
+<!--                android:id="@+id/remindDateSelect"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="@dimen/_45sdp"-->
+<!--                android:layout_marginTop="@dimen/_16sdp"-->
+<!--                android:background="@drawable/background_input"-->
+<!--                android:hint="Remind On"-->
+<!--                android:paddingStart="@dimen/_16sdp"-->
+<!--                android:paddingEnd="@dimen/_16sdp"-->
+<!--                android:textColor="@color/primary_text"-->
+<!--                android:textSize="@dimen/_13ssp"-->
+<!--                android:editable="false"-->
+<!--                />-->
+
+
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="@dimen/_16sdp"-->
+<!--                android:hint="Remind Before"-->
+<!--                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense.ExposedDropdownMenu"-->
+<!--                >-->
+
+<!--                <AutoCompleteTextView-->
+<!--                    android:id="@+id/remindBeforeSelect"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:inputType="none"-->
+<!--                    android:background="@drawable/background_input"/>-->
+
+
+
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
 
             <EditText
-                android:id="@+id/inputConfirmPassword1"
+                android:id="@+id/inputNotes"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_45sdp"
                 android:layout_marginTop="@dimen/_16sdp"
@@ -151,7 +186,6 @@
                 android:hint="Note:"
                 android:imeOptions="actionDone"
                 android:importantForAutofill="no"
-                android:inputType="textPassword"
                 android:paddingStart="@dimen/_16sdp"
                 android:paddingEnd="@dimen/_16sdp"
                 android:textColor="@color/primary_text"
