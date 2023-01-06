@@ -66,50 +66,80 @@ public class productCreateActivity extends BaseActivity {
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             pickImage.launch(intent);
         });
-        binding.buttonAddProduct.setOnClickListener(v -> addProduct());
+        binding.buttonAddProduct.setOnClickListener(v -> {
+            if(isValidAddDetails()){
+                addProduct();
+            }
+        });
     }
 
 
     private void addProduct(){
         loading(true);
-
         FirebaseFirestore database = FirebaseFirestore.getInstance();
         HashMap<String, Object> product = new HashMap<>();
         product.put(Constants.KEY_OWNER_ID, preferenceManager.getString(Constants.KEY_USER_ID));
         product.put(Constants.KEY_PRODUCT_NAME, binding.inputProductName.getText().toString());
-        product.put(Constants.KEY_PRODUCT_NOTES, binding.inputNotes.getText().toString());
         product.put(Constants.KEY_PRODUCT_CATEGORY, selectCategory());
         product.put(Constants.KEY_PRODUCT_IMAGE, encodedImage);
         product.put(Constants.KEY_PRODUCT_TYPE, "1");
 
-
-        String nextServiceDate=etNextServiceDate.getText().toString();
         Calendar calendar = Calendar.getInstance();
-        String[] NextServiceDate = nextServiceDate.split("/");
-        int year = Integer.parseInt(NextServiceDate[2]);
-        int month = Integer.parseInt(NextServiceDate[1]) - 1; // months are 0-based
-        int day = Integer.parseInt(NextServiceDate[0]);
-        calendar.set(year, month, day, 0 , 0 , 0);
-        Date date = calendar.getTime();
-        product.put(Constants.KEY_NEXT_SERVICE_DATE, date);
+        Date date;
+        int year;
+        int month;
+        int day;
+        String nextServiceDate=etNextServiceDate.getText().toString();
+        if(nextServiceDate.isEmpty()){
+            nextServiceDate=null;
+            product.put(Constants.KEY_NEXT_SERVICE_DATE, nextServiceDate);
+        }else{
+            String[] NextServiceDate = nextServiceDate.split("/");
+            year = Integer.parseInt(NextServiceDate[2]);
+            month = Integer.parseInt(NextServiceDate[1]) - 1; // months are 0-based
+            day = Integer.parseInt(NextServiceDate[0]);
+            calendar.set(year, month, day, 0 , 0 , 0);
+            date = calendar.getTime();
+            product.put(Constants.KEY_NEXT_SERVICE_DATE, date);
+        }
 
         String lastServiceDate=etLastServiceDate.getText().toString();
-        String[] LastServiceDate = lastServiceDate.split("/");
-        year = Integer.parseInt(LastServiceDate[2]);
-        month = Integer.parseInt(LastServiceDate[1]) - 1; // months are 0-based
-        day = Integer.parseInt(LastServiceDate[0]);
-        calendar.set(year, month, day, 0 , 0 , 0);
-        date = calendar.getTime();
-        product.put(Constants.KEY_LAST_SERVICE_DATE, date);
+        if(lastServiceDate.isEmpty()){
+            lastServiceDate=null;
+            product.put(Constants.KEY_LAST_SERVICE_DATE, lastServiceDate);
+        }else {
+            String[] LastServiceDate = lastServiceDate.split("/");
+            year = Integer.parseInt(LastServiceDate[2]);
+            month = Integer.parseInt(LastServiceDate[1]) - 1; // months are 0-based
+            day = Integer.parseInt(LastServiceDate[0]);
+            calendar.set(year, month, day, 0 , 0 , 0);
+            date = calendar.getTime();
+            product.put(Constants.KEY_LAST_SERVICE_DATE, date);
+        }
+
 
         String warrantyDate=etWarrantyDate.getText().toString();
-        String[] WarrantyDate = warrantyDate.split("/");
-        year = Integer.parseInt(WarrantyDate[2]);
-        month = Integer.parseInt(WarrantyDate[1]) - 1; // months are 0-based
-        day = Integer.parseInt(WarrantyDate[0]);
-        calendar.set(year, month, day, 0 , 0 , 0);
-        date = calendar.getTime();
-        product.put(Constants.KEY_WARRANTY_EXPIRY_DATE, date);
+        if(warrantyDate.isEmpty()){
+            warrantyDate=null;
+            product.put(Constants.KEY_WARRANTY_EXPIRY_DATE, warrantyDate);
+        }else {
+            String[] WarrantyDate = warrantyDate.split("/");
+            year = Integer.parseInt(WarrantyDate[2]);
+            month = Integer.parseInt(WarrantyDate[1]) - 1; // months are 0-based
+            day = Integer.parseInt(WarrantyDate[0]);
+            calendar.set(year, month, day, 0 , 0 , 0);
+            date = calendar.getTime();
+            product.put(Constants.KEY_WARRANTY_EXPIRY_DATE, date);
+        }
+        String note = binding.inputNotes.getText().toString();
+        if (note.isEmpty()){
+            note = null;
+            product.put(Constants.KEY_PRODUCT_NOTES, note);
+        }else {
+            product.put(Constants.KEY_PRODUCT_NOTES, binding.inputNotes.getText().toString());
+        }
+
+
 
 //        String remindDate=remindDateSelect.getText().toString();
 //        String[] RemindDate = remindDate.split("/");
@@ -351,9 +381,6 @@ public class productCreateActivity extends BaseActivity {
             return false;
         }else if(binding.categorySelect.getText().toString().trim().isEmpty()){
             showToast("Pls select a category for this product");
-            return false;
-        }else if(binding.etNextServiceDate.getText().toString().trim().isEmpty()){
-            showToast("Pls select next service date");
             return false;
         }else if((binding.etNextServiceDate.getText().toString().trim().isEmpty())&&(binding.etWarrantyDate.getText().toString().trim().isEmpty())){
             showToast("Pls select at least one form Next Service Date or Warranty Date");
